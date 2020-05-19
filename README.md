@@ -181,11 +181,10 @@ http://localhost:3000/
 
 <br><br>
 <br>
-# ★Dockerイメージをクラウド（Azure）にアップロードしよう★
+# ★クラウド上でRailsを起動しよう★
+使用するクラウド・・・Azure
 <br><br>
-# ⑳ DBの向き先をAzureのDBに変更するため
-C:\Users\azure_db\database.yml　を
-C:\Users\myapp\config\database.yml　にファイルごと上書きします
+# ⑳ C:\Users\azure_db\database.yml　をC:\Users\myapp\config\database.yml　にファイルごと上書きし、DBの向き先をAzure上のDBに指定します
 
 <br><br>
 # ㉑ Dockerファイルの最後に以下を追記します
@@ -193,7 +192,7 @@ C:\Users\myapp\config\database.yml　にファイルごと上書きします
 CMD /bin/sh -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 8080 -b '0.0.0.0'"
 ```
 <br><br>
-# ㉒ 以下のコマンドでDcokerのビルドします
+# ㉒ 以下のコマンドでDockerのビルドします
 ```
 docker-compose build --no-cache
 ```
@@ -204,7 +203,7 @@ docker-compose build --no-cache
 docker login azureContainerRegistryName1.azurecr.io --username azureContainerRegistryName1
 ```
 <br><br>
-# ㉔ 以下のコマンドでDcokerイメージにタグ付けをします
+# ㉔ 以下のコマンドでDockerイメージにタグ付けをします
 
 ```
 docker tag myapp_web azureContainerRegistryName1.azurecr.io/myapp_web:v1.0.0
