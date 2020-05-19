@@ -193,24 +193,29 @@ C:\Users\myapp\config\database.yml　にファイルごと上書きします
 CMD /bin/sh -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 8080 -b '0.0.0.0'"
 ```
 <br><br>
-# ㉒ 以下のコマンドでビルドします
+# ㉒ 以下のコマンドでDcokerのビルドします
 ```
 docker-compose build --no-cache
 ```
 <br><br>
-# ㉓ 以下のコマンドでAzureに接続します　※パスワードが求められる
-
+# ㉓ 以下のコマンドでAzureに接続します
+※パスワードが求められます
 ```
 docker login azureContainerRegistryName1.azurecr.io --username azureContainerRegistryName1
 ```
 <br><br>
-# ㉔ 以下のコマンドでイメージにタグ付けをします
+# ㉔ 以下のコマンドでDcokerイメージにタグ付けをします
 
 ```
 docker tag myapp_web azureContainerRegistryName1.azurecr.io/myapp_web:v1.0.0
 ```
 <br><br>
-# ㉒ 以下のコマンドでイメージをAzureにデプロイします
+# ㉒ 以下のコマンドでDockerイメージをAzureにデプロイします
 ```
 docker push azureContainerRegistryName1.azurecr.io/myapp_web:v1.0.0
+```
+<br><br>
+# ㉓ 以下に接続してみましょう！
+```
+https://webapl1001.azurewebsites.net/
 ```
