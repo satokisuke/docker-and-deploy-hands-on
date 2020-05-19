@@ -178,30 +178,39 @@ http://localhost:3000/
 <br>
 このような画面が表示されたら完成！
 
-<br><br><br>
-# おまけ
 
+<br><br>
 <br>
+# ★Dockerイメージをクラウド（Azure）にアップロードしよう★
+<br><br>
+# ⑳ DBの向き先をAzureのDBに変更するため
+C:\Users\azure_db\database.yml　を
+C:\Users\myapp\config\database.yml　にファイルごと上書きします
 
-# モデルから画面まで自動生成します
+<br><br>
+# ㉑ Dockerファイルの最後に以下を追記します
+```
+CMD /bin/sh -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 8080 -b '0.0.0.0'"
+```
+<br><br>
+# ㉒ 以下のコマンドでビルドします
+```
+docker-compose build --no-cache
+```
+<br><br>
+# ㉓ 以下のコマンドでAzureに接続します　※パスワードが求められる
 
 ```
-rails g scaffold Personal number:string name:string date:string
+docker login azureContainerRegistryName1.azurecr.io --username azureContainerRegistryName1
 ```
-<br>
-
-# 追加したモデルの分テーブルを作成します
+<br><br>
+# ㉔ 以下のコマンドでイメージにタグ付けをします
 
 ```
-rails db:migrate
+docker tag myapp_web azureContainerRegistryName1.azurecr.io/myapp_web:v1.0.0
 ```
-<br>
-
-# 以下に接続して確認！
+<br><br>
+# ㉒ 以下のコマンドでイメージをAzureにデプロイします
 ```
-http://localhost:3000/personals
+docker push azureContainerRegistryName1.azurecr.io/myapp_web:v1.0.0
 ```
-
-<br>
-
-![キャプチャ](https://user-images.githubusercontent.com/53431136/69335804-d40ace00-0ca0-11ea-9fe8-3a8f0cbd74c4.PNG)
