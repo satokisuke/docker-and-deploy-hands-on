@@ -184,7 +184,8 @@ http://localhost:3000/
 # ★クラウド上でRailsを起動しよう★
 使用するクラウド・・・Azure
 <br><br>
-# ⑳ C:\Users\azure_db\database.yml　をC:\Users\myapp\config\database.yml　にファイルごと上書きし、DBの向き先をAzure上のDBに指定します
+# ⑳ DBの向き先をAzure上のDBに変更します
+C:\Users\azure_db\database.yml　をC:\Users\myapp\config\database.yml　にファイルごと上書きします
 
 <br><br>
 # ㉑ Dockerファイルの最後に以下を追記します
