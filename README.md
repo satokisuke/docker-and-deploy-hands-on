@@ -11,7 +11,7 @@ docker-hands-on-master.zipを解凍し、myappディレクトリをユーザー�
 <br><br>
 # ② 配置したmyappフォルダに移動します
 ```
-cd C:\Users\myapp
+cd C:\Users\docker-and-deploy-hands-on\myapp
 ```
 <br><br>
 # ③ Railsの新規プロジェクトを作成します
@@ -26,10 +26,10 @@ docker-compose down
 ```
 <br><br>
 # ⑤ DBの向きを変更します
-C:\Users\myapp\config\database.yml　を配布したファイルでファイルごと上書きします
+C:\Users\docker-and-deploy-hands-on\database.yml　をC:\Users\docker-and-deploy-hands-on\myapp\config\database.yml　にファイルごと上書きします
 <br><br>
 # ⑥ ファイルを配置します
-C:\Users\myapp\mysql-confd　に　ファイル（default_authentication.cnf）を配置します
+C:\Users\docker-and-deploy-hands-on\default_authentication.cnf　をC:\Users\myapp\mysql-confd　に配置します
 <br><br>
 # ⑦ イメージをビルドします
 ```
@@ -88,7 +88,7 @@ rails db:migrate
 rails g controller Employees
 ```
 <br><br>
-# ⑬ myapp\app\controllers　配下の以下のファイルを編集します
+# ⑬ docker-and-deploy-hands-on\myapp\app\controllers　配下の以下のファイルを編集します
 対象ファイル：employees_controller.rb
 ```
 class EmployeesController < ApplicationController
@@ -98,7 +98,7 @@ class EmployeesController < ApplicationController
 end
 ```
 <br><br>
-# ⑭ myapp\db　配下の以下のファイルを編集します
+# ⑭ docker-and-deploy-hands-on\myapp\db　配下の以下のファイルを編集します
 対象ファイル：seeds.rb
 ```
 Employee.create(
@@ -127,7 +127,7 @@ Employee.create(
 rails db:seed
 ```
 <br><br>
-# ⑯ myapp\config　配下の以下のファイルを編集します
+# ⑯ docker-and-deploy-hands-on\myapp\config　配下の以下のファイルを編集します
 対象ファイル：routes.rb
 ```
 Rails.application.routes.draw do
@@ -142,7 +142,7 @@ touch app/views/employees/index.html.erb
 ```
 
 <br><br>
-# ⑱ app/views/employees　配下の以下のファイルを編集します
+# ⑱ docker-and-deploy-hands-on\myapp\app\views\employees　配下の以下のファイルを編集します
 対象ファイル：index.html.erb
 ```
 <h1>List of employees</h1>
@@ -185,37 +185,43 @@ http://localhost:3000/
 使用するクラウド・・・Azure
 <br><br>
 # ⑳ DBの向き先をAzure上のDBに変更します
-C:\Users\azure_db\database.yml　をC:\Users\myapp\config\database.yml　にファイルごと上書きします
+C:\Users\docker-and-deploy-hands-on\azure_db\database.yml　をC:\Users\docker-and-deploy-hands-on\myapp\config\database.yml　にファイルごと上書きします
 
 <br><br>
-# ㉑ Dockerファイルの最後に以下を追記します
+# ㉑ C:\Users\docker-and-deploy-hands-on\myapp\Dockerfileの最後に以下を追記します
 ```
 CMD /bin/sh -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 8080 -b '0.0.0.0'"
 ```
 <br><br>
-# ㉒ 以下のコマンドでDockerのビルドします
+# ㉒ 以下のコマンドでWEBのコンテナから抜けます
+```
+exit
+```
+<br><br>
+# ㉓ 以下のコマンドでDockerのビルドします　※少し時間がかかります
 ```
 docker-compose build --no-cache
 ```
 <br><br>
-# ㉓ 以下のコマンドでAzureに接続します
+# ㉔ 以下のコマンドでAzureに接続します
 ※パスワードが求められます
 ```
 docker login azureContainerRegistryName1.azurecr.io --username azureContainerRegistryName1
 ```
 <br><br>
-# ㉔ 以下のコマンドでDockerイメージにタグ付けをします
+# ㉕ 以下のコマンドでDockerイメージにタグ付けをします
 
 ```
 docker tag myapp_web azureContainerRegistryName1.azurecr.io/myapp_web:v1.0.0
 ```
 <br><br>
-# ㉒ 以下のコマンドでDockerイメージをAzureにデプロイします
+# ㉖ 以下のコマンドでDockerイメージをAzureにデプロイします　※少し時間がかかります
+※　クラウドが１つのため、同時に実施してください。
 ```
 docker push azureContainerRegistryName1.azurecr.io/myapp_web:v1.0.0
 ```
 <br><br>
-# ㉓ 以下に接続してみましょう！
+# ㉗ 以下に接続してみましょう！　※初回起動時は少し時間がかかります
 ```
 https://webapl1001.azurewebsites.net/
 ```
