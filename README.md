@@ -11,7 +11,7 @@ docker-hands-on-master.zipを解凍し、myappディレクトリをユーザー�
 <br><br>
 # ② 配置したmyappフォルダに移動します
 ```
-cd C:\Users\docker-and-deploy-hands-on\myapp
+cd C:\Users\myapp
 ```
 <br><br>
 # ③ Railsの新規プロジェクトを作成します
@@ -26,11 +26,13 @@ docker-compose down
 ```
 <br><br>
 # ⑤ DBの向きを変更します
-C:\Users\docker-and-deploy-hands-on\database.yml　を
-C:\Users\docker-and-deploy-hands-on\myapp\config\database.yml　にファイルごと上書きします
+C:\Users\database.yml　を
+<br>
+C:\Users\myapp\config\database.yml　にファイルごと上書きします
 <br><br>
 # ⑥ ファイルを配置します
-C:\Users\docker-and-deploy-hands-on\default_authentication.cnf　を
+C:\Users\default_authentication.cnf　を
+<br>
 C:\Users\myapp\mysql-confd　に配置します
 <br><br>
 # ⑦ イメージをビルドします
@@ -90,7 +92,7 @@ rails db:migrate
 rails g controller Employees
 ```
 <br><br>
-# ⑬ docker-and-deploy-hands-on\myapp\app\controllers　配下の以下のファイルを編集します
+# ⑬ myapp\app\controllers　配下の以下のファイルを編集します
 対象ファイル：employees_controller.rb
 ```
 class EmployeesController < ApplicationController
@@ -100,7 +102,7 @@ class EmployeesController < ApplicationController
 end
 ```
 <br><br>
-# ⑭ docker-and-deploy-hands-on\myapp\db　配下の以下のファイルを編集します
+# ⑭ myapp\db　配下の以下のファイルを編集します
 対象ファイル：seeds.rb
 ```
 Employee.create(
@@ -129,7 +131,7 @@ Employee.create(
 rails db:seed
 ```
 <br><br>
-# ⑯ docker-and-deploy-hands-on\myapp\config　配下の以下のファイルを編集します
+# ⑯ myapp\config　配下の以下のファイルを編集します
 対象ファイル：routes.rb
 ```
 Rails.application.routes.draw do
@@ -144,7 +146,7 @@ touch app/views/employees/index.html.erb
 ```
 
 <br><br>
-# ⑱ docker-and-deploy-hands-on\myapp\app\views\employees　配下の以下のファイルを編集します
+# ⑱ myapp\app\views\employees　配下の以下のファイルを編集します
 対象ファイル：index.html.erb
 ```
 <h1>List of employees</h1>
@@ -187,11 +189,12 @@ http://localhost:3000/
 使用するクラウド・・・Azure
 <br><br>
 # ⑳ DBの向き先をAzure上のDBに変更します
-C:\Users\docker-and-deploy-hands-on\azure_db\database.yml　を
-C:\Users\docker-and-deploy-hands-on\myapp\config\database.yml　にファイルごと上書きします
+C:\Users\azure_db\database.yml　を
+<br>
+C:\Users\myapp\config\database.yml　にファイルごと上書きします
 
 <br><br>
-# ㉑ C:\Users\docker-and-deploy-hands-on\myapp\Dockerfileの最後に以下を追記します
+# ㉑ C:\Users\myapp\Dockerfileの最後に以下を追記します
 ```
 CMD /bin/sh -c "rm -f tmp/pids/server.pid && bundle exec rails s -p 8080 -b '0.0.0.0'"
 ```
