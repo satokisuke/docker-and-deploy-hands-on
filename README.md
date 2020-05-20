@@ -26,10 +26,12 @@ docker-compose down
 ```
 <br><br>
 # ⑤ DBの向きを変更します
-C:\Users\docker-and-deploy-hands-on\database.yml　をC:\Users\docker-and-deploy-hands-on\myapp\config\database.yml　にファイルごと上書きします
+C:\Users\docker-and-deploy-hands-on\database.yml　を
+C:\Users\docker-and-deploy-hands-on\myapp\config\database.yml　にファイルごと上書きします
 <br><br>
 # ⑥ ファイルを配置します
-C:\Users\docker-and-deploy-hands-on\default_authentication.cnf　をC:\Users\myapp\mysql-confd　に配置します
+C:\Users\docker-and-deploy-hands-on\default_authentication.cnf　を
+C:\Users\myapp\mysql-confd　に配置します
 <br><br>
 # ⑦ イメージをビルドします
 ```
@@ -185,7 +187,8 @@ http://localhost:3000/
 使用するクラウド・・・Azure
 <br><br>
 # ⑳ DBの向き先をAzure上のDBに変更します
-C:\Users\docker-and-deploy-hands-on\azure_db\database.yml　をC:\Users\docker-and-deploy-hands-on\myapp\config\database.yml　にファイルごと上書きします
+C:\Users\docker-and-deploy-hands-on\azure_db\database.yml　を
+C:\Users\docker-and-deploy-hands-on\myapp\config\database.yml　にファイルごと上書きします
 
 <br><br>
 # ㉑ C:\Users\docker-and-deploy-hands-on\myapp\Dockerfileの最後に以下を追記します
